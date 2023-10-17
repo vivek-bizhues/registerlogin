@@ -24,13 +24,9 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint for registration.
       const response = await axios.post(`http://localhost:8000/user/register`, formData);
-
-      // Handle the API response here, e.g., show a success message.
       console.log('Registration successful:', response.data);
 
-      // Clear the form after a successful submission.
       setFormData({
         username: '',
         email: '',
@@ -38,7 +34,6 @@ const Register = () => {
       });
       navigate('/login');
     } catch (error) {
-      // Handle errors, e.g., display an error message to the user.
       console.error('Registration failed:', error);
     }
   };

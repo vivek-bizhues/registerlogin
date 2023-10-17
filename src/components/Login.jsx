@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import { Box, Heading, FormControl, FormLabel, Input, Button, VStack } from '@chakra-ui/react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../Context/AuthContext';
 
 const Login = () => {
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
 
+ 
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData({
@@ -26,12 +29,10 @@ const Login = () => {
 
       console.log('Login response:', response.data);
 
-      // Assuming your API returns a token as response.data.token, you can store it in local storage.
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('userEmail', formData.email);
-        // You can also store other user-related information if needed.
-        // localStorage.setItem('user', JSON.stringify(response.data.user));
+        login()
       }
       navigate('/home')
 

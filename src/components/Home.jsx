@@ -1,63 +1,3 @@
-// import { Box, Button, Center, Heading, Spinner, Text } from '@chakra-ui/react';
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-
-// const Home = () => {
-//   const [userData, setUserData] = useState(null);
-
-//   useEffect(() => {
-//     // Retrieve the email from local storage
-//     const userEmail = localStorage.getItem('userEmail');
-
-//     if (userEmail) {
-//       // Use the email to make the API request
-//       axios.get(`http://localhost:8000/user/${userEmail}`)
-//         .then((response) => {
-//           setUserData(response.data);
-//         })
-//         .catch((error) => {
-//           console.error('Error fetching user data:', error);
-//         });
-//     } else {
-//       // Handle the case where the email is not found in local storage
-//       console.error('User email not found in local storage');
-//     }
-//   }, []);
-
-//   const handlePasswordChange = () => {
-//     // Implement the password reset logic here
-//     // You can make an API call to initiate the password reset process
-//     // For example: axios.post(`http://localhost:8000/reset-password`, { email: userData.email })
-//   };
-//   return (
-//     <Box p={4}>
-//       <Heading size="md">Home</Heading>
-//       <Center>
-//       {userData ? (
-//         <Box>
-//           <Text>Email: {userData.email}</Text>
-//           <Text>Name: {userData.username}</Text>
-//           {/* Add other user data fields here */}
-//         </Box>
-//       ) : (
-//         <Spinner size="xl" />
-//       )}
-//     </Center>
-//     <Button
-//         mt={4}
-//         colorScheme="teal"
-//         onClick={handlePasswordChange}
-//       >
-//         Change Password
-//       </Button>
-//     </Box>
-//   );
-// };
-
-// export default Home;
-
-
-
 import { Box, Button, Center, FormControl, FormLabel, Heading, Input, Spinner, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -71,11 +11,9 @@ const Home = () => {
   const [passwordChangeError, setPasswordChangeError] = useState(null);
 
   useEffect(() => {
-    // Retrieve the email from local storage
     const userEmail = localStorage.getItem('userEmail');
 
     if (userEmail) {
-      // Use the email to make the API request
       axios.get(`http://localhost:8000/user/${userEmail}`)
         .then((response) => {
           setUserData(response.data);
@@ -84,7 +22,6 @@ const Home = () => {
           console.error('Error fetching user data:', error);
         });
     } else {
-      // Handle the case where the email is not found in local storage
       console.error('User email not found in local storage');
     }
   }, []);

@@ -1,15 +1,18 @@
 import React from 'react';
 import { Box, Flex, Heading, Link } from '@chakra-ui/react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { useAuth } from '../Context/AuthContext';
 
 const Navbar = () => {
   // Check if a token is present in local storage
   const hasToken = localStorage.getItem('token');
+  const { logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
     // Remove the token from local storage when logging out
     localStorage.removeItem('token');
+    logout();
     // You can also perform other logout actions if needed.
 
     // For example, you can redirect the user to the login page:
